@@ -66,4 +66,35 @@ function changePlayerInfo(music) {
   audioPlayer.load();
   progressBar.value = 0;
   currentTimeDisplay.textContent = "00:00";
-  totalTimeDisplay.textContent =
+  totalTimeDisplay.textContent = "00:00";
+}
+
+function selectSurah(music, index) {
+  currentSurahIndex = index;
+  changePlayerInfo(music);
+}
+
+document.getElementById('play-stop-btn').addEventListener('click', () => {
+  isPlaying ? audioPlayer.pause() : audioPlayer.play();
+  isPlaying = !isPlaying;
+  document.getElementById('play-stop-btn').textContent = isPlaying ? '⏸️' : '▶️';
+});
+
+audioPlayer.addEventListener('timeupdate', () => {
+  const currentTime = Math.floor(audioPlayer.currentTime);
+  const totalTime = Math.floor(audioPlayer.duration);
+  progressBar.value = (currentTime / totalTime) * 100;
+  currentTimeDisplay.textContent = formatTime(currentTime);
+  totalTimeDisplay.textContent = formatTime(totalTime);
+});
+
+function formatTime(seconds) {
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = seconds % 60;
+  return `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
+}
+
+document.getElementById('menu-toggle').addEventListener('click', () => {
+  const sidebar = document.getElementById('sidebar');
+  sidebar.style.left = sidebar.style.left === '0px' ? '-300px' : '0px';
+});
