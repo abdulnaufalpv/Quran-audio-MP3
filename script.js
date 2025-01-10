@@ -110,7 +110,7 @@ function selectSurah(music, index) {
   changePlayerInfo(music);
   closeSidebar();
   audioPlayer.play().then(() => {
-    playStopButton.textContent = "❚❚";
+    playStopButton.textContent = "⏹️";
     isPlaying = true;
   }).catch(error => {
     console.error("Error playing the audio:", error);
@@ -176,7 +176,7 @@ nextButton.addEventListener('click', () => {
   currentSurahIndex = (currentSurahIndex + 1) % musicData.length;
   changePlayerInfo(musicData[currentSurahIndex]);
   audioPlayer.play();
-  playStopButton.textContent = "❚❚";
+  playStopButton.textContent = "⏸️";
   isPlaying = true;
 });
 
@@ -184,7 +184,7 @@ prevButton.addEventListener('click', () => {
   currentSurahIndex = (currentSurahIndex - 1 + musicData.length) % musicData.length;
   changePlayerInfo(musicData[currentSurahIndex]);
   audioPlayer.play();
-  playStopButton.textContent = "❚❚";
+  playStopButton.textContent = "⏸️";
   isPlaying = true;
 });
 
@@ -209,10 +209,10 @@ const playStopButton = document.querySelector("#play-stop-btn");
 playStopButton.addEventListener('click', () => {
   if (isPlaying) {
     audioPlayer.pause();
-    playStopButton.textContent = '▶';
+    playStopButton.textContent = '▶️';
   } else {
     audioPlayer.play();
-    playStopButton.textContent = '❚❚';
+    playStopButton.textContent = '⏸️';
   }
   isPlaying = !isPlaying;
 });
@@ -232,7 +232,7 @@ const repeatButton = document.querySelector("#repeat-btn");
 
 repeatButton.addEventListener('click', () => {
   repeatEnabled = !repeatEnabled;
-  repeatButton.textContent = repeatEnabled ? "🔂" : "🔁";
+  repeatButton.textContent = repeatEnabled ? "🔁:⏺️" : "🔁:⏹️";
 });
 
 audioPlayer.onended = function() {
