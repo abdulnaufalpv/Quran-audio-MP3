@@ -1,179 +1,319 @@
-/* General Styles */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f0f4f8;
-}
-
-/* Header */
-header {
-    background-color: #0044cc;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-}
-
 /* Toggler Button */
 #menu-toggle {
-    font-size: 2rem;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-    padding: 10px;
-    border-radius: 50%;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+  margin-right: 10px; /* Adjust margin to ensure it aligns to the right */
 }
 
 /* Sidebar (hidden by default) */
 .sidebar {
-    position: fixed;
-    top: 0;
-    left: -300px;
-    width: 300px;
-    height: 100%;
-    background-color: white;
-    color: #333;
-    padding-top: 100px;
-    transition: left 0.3s ease-in-out;
-    z-index: 999;
-    overflow-y: auto;
-    border: 2px solid #0044cc;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 300px;
+  height: 100%;
+  background-color: white;
+  color: #333;
+  padding-top: 100px;
+  padding-bottom: 60px;
+  transition: left 0.3s ease-in-out;
+  z-index: 999;
+  overflow-y: auto;
+  border: 2px solid #0044cc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Sidebar List Styling */
 .sidebar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .sidebar li {
-    margin-bottom: 10px;
+  padding: 0;
+  text-align: left;
+  width: 100%;
+  position: relative;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
+/* Surah number and name display */
 .sidebar li button {
-    text-decoration: none;
-    color: #333;
-    font-size: 1.2rem;
-    padding: 15px;
-    background-color: #fff;
-    width: 100%;
-    cursor: pointer;
-    border-radius: 10px;
-    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+  text-decoration: none;
+  color: #333;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
+/* Styling for Surah number */
+.sidebar li button .surah-number {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+/* Styling for Surah name */
+.sidebar li button .surah-name {
+  font-weight: normal;
+  font-size: 1.1rem;
+  color: #0044cc;
+}
+
+/* Hover effects for the list item */
 .sidebar li:hover {
-    background-color: #f4f4f9;
-    transform: scale(1.05);
+  background-color: #f4f4f9;
+  transform: scale(1.05);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
 }
 
+/* Hover effects for the button */
 .sidebar li button:hover {
-    background-color: #e6f0ff;
+  color: #0044cc;
+  transform: translateX(10px);
+  background-color: #e6f0ff;
 }
 
-/* Player Image */
+/* Active (clicked/touched) effects for list items */
+.sidebar li:active {
+  background-color: #0044cc;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.sidebar li button:active {
+  color: white;
+  background-color: #0033a0;
+}
+
+/* Animation for sidebar items */
+.sidebar li {
+  animation: slideIn 0.5s ease-out forwards;
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Close button styling */
+.close-btn {
+  background-color: transparent;
+  border: none;
+  color: #333;
+  font-size: 2rem;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+/* Main Content */
+.main-content {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  padding-bottom: 60px;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+/* Player Image - Added Heartbeat Animation */
 .player-banner-img {
-    width: 250px;
-    height: 250px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    border: 5px solid white;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  border: 5px solid white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  animation: heartbeat 1.5s ease-in-out infinite;
 }
 
-/* Player Info */
+/* Heartbeat Animation */
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.05);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Player Info Container */
 .player-info-container {
-    background-color: #fff;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    width: 90%;
-    max-width: 400px;
-    transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 20px;
+  width: 90%;
+  max-width: 400px;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .player-info-container:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.player-info h2 {
+  margin-bottom: 10px;
 }
 
 /* Audio Controls */
 .audio-controls {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px;
+  align-items: center;
+  overflow-x: auto;
 }
 
 .audio-controls .symbol {
-    width: 50px;
-    height: 50px;
-    background-color: #0044cc;
-    color: white;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.2s, transform 0.2s;
+  width: 50px;
+  height: 50px;
+  background-color: #0044cc;
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
 }
 
 .audio-controls .symbol:hover {
-    background-color: #0033aa;
-    transform: scale(1.1);
+  background-color: #0033aa;
+  transform: scale(1.1);
 }
 
 /* Loading Bar */
 .loading-bar {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
 
 #progress-bar {
-    width: 80%;
-    height: 10px;
-    border-radius: 5px;
+  width: 80%;
+  height: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  overflow: hidden;
 }
 
 #progress-bar::-webkit-progress-bar {
-    background-color: #e0e0e0;
+  background-color: #e0e0e0;
+  border-radius: 5px;
 }
 
 #progress-bar::-webkit-progress-value {
-    background-color: #0044cc;
+  background-color: #0044cc;
+  border-radius: 5px;
 }
 
-/* Media Queries for Responsive Design */
+/* Sidebar Toggle using checkbox hack */
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"]:checked ~ .sidebar {
+  left: 0;
+}
+
+input[type="checkbox"]:checked ~ header #menu-toggle {
+  transform: rotate(90deg);
+}
+
+/* Sidebar Styling for Desktop */
 @media (min-width: 768px) {
-    .main-content {
-        display: flex;
-        flex-direction: row;
-        gap: 20px;
-        padding-left: 320px;
-    }
+  input[type="checkbox"]:not(:checked) ~ .sidebar {
+    left: -300px;
+  }
+
+  .main-content {
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    padding-left: 320px;
+  }
+
+  .player-banner-img {
+    width: 350px;
+    height: 350px;
+    margin-right: 40px;
+  }
+
+  .player-info-container {
+    width: 50%;
+  }
+
+  input[type="checkbox"]:not(:checked) ~ .sidebar {
+    left: -300px;
+  }
+
+  .sidebar + .main-content {
+    padding-left: 320px;
+  }
 }
 
+/* Responsive Design for Mobile */
 @media (max-width: 768px) {
-    header {
-        flex-direction: row;
-        justify-content: space-between;
-    }
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
 
-    #menu-toggle {
-        font-size: 1.8rem;
-        position: absolute;
-        right: 20px;
-        top: 20px;
-    }
+  #menu-toggle {
+    font-size: 1.8rem;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
 
-    .main-content {
-        margin-top: 120px;
-    }
-    
-    .sidebar {
-        width: 250px;
-    }
+  .main-content {
+    margin-top: 120px;
+  }
+
+  .player-banner-img {
+    width: 200px;
+    height: 200px;
+  }
+
+  .player-info-container {
+    max-width: 100%;
+  }
 }
