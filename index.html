@@ -3,58 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Surah Player</title>
-  <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS -->
+  <title>Audio Player</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div id="player-container">
+    <!-- Player Banner -->
+    <img id="player-banner" src="https://static.vecteezy.com/system/resources/previews/037/993/568/non_2x/ai-generated-islamic-holy-al-quran-with-arabic-calligraphy-and-tasbih-beads-photo.jpg" alt="Player Banner">
 
-  <h1 id="player-title-english">Surah Title in English</h1>
-  <button id="menu-toggle" class="menu-toggle">☰</button>
-  
-  <!-- Main Content: Centered Image and Player Info -->
-  <div class="main-content">
-    <!-- Image Banner -->
-    <img id="player-banner" class="player-banner-img" src="banner.jpg" alt="Surah Banner">
-    <!-- Player Info Container -->
-    <div class="player-info-container">
-      <div class="player-info">
-        <h2 id="player-title" style="color: blue; font-size: 20px; display: inline; margin-right: 10px;">Surah Title</h2>
-        <p id="player-number" style="color: blue; font-size: 20px; display: inline;">Surah Number</p> 
-        <h3 id="player-title-meaning">Surah Meaning</h3>
-        <p id="place-of-revelation">Revelation: Mecca/Medina</p>
-        
-        <!-- Progress Bar -->
-        <div class="loading-bar">
-          <span id="current-time">00:00</span> <progress id="progress-bar" value="0" max="100"></progress>
-          <span id="total-time">00:00</span>
-        </div>
-        
-        <br>
-        
-        <!-- Audio Controls -->
-        <div class="audio-controls">
-          <button id="repeat-btn">🔁</button>
-          <button id="jump-10-btn">⏭️</button>
-          <button id="prev-btn">⏪</button>
-          <button id="mute-btn">🔕</button>
-          <button id="play-stop-btn">▶️</button>
-          <button id="next-btn">⏩</button>
-          <button id="jump-back-10-btn">⏮️</button>
-          <button id="auto-play-btn">🔀</button>
-        </div>
+    <!-- Player Info -->
+    <h2 id="player-title">Surah Name</h2>
+    <p id="player-number">001</p>
+    <p id="player-title-english">Title English</p>
+    <p id="player-title-meaning">Meaning</p>
+    <p id="place-of-revelation">Revelation: Mecca</p>
 
-      </div>
+    <!-- Controls -->
+    <div class="controls">
+      <button id="prev-btn">⏮</button>
+      <button id="play-stop-btn">▶</button>
+      <button id="next-btn">⏭</button>
+      <button id="repeat-btn">🔂</button>
+      <button id="auto-play-btn">🔀</button>
+    </div>
+
+    <!-- Progress Bar -->
+    <input type="range" id="progress-bar" value="0" max="100">
+    <div class="time-display">
+      <span id="current-time">00:00</span> / <span id="total-time">00:00</span>
+    </div>
+
+    <!-- Mute Button -->
+    <button id="mute-btn">🔊</button>
+
+    <!-- Playlist Toggle -->
+    <button id="menu-toggle">☰</button>
+    <div id="sidebar">
+      <ul id="surah-list"></ul>
+      <button id="close-btn">×</button>
     </div>
   </div>
 
-  <!-- Sidebar (Hidden Initially) -->
-  <div id="sidebar" class="sidebar">
-    <button id="close-btn" class="close-btn">×</button>
-    <ul id="surah-list">
-      <!-- Surah items will be dynamically added here -->
-    </ul>
-  </div>
-
-  <script src="script.js"></script> <!-- Link to external JavaScript -->
+  <script src="script.js"></script>
 </body>
 </html>
