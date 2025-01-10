@@ -3,55 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Surah Player</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Surah Audio Player</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1 id="player-title-english">Surah Title in English</h1>
-        <button id="menu-toggle" class="menu-toggle">☰</button>
+        <h1>Surah Audio Player</h1>
+        <button id="menu-toggle">☰</button>
     </header>
 
-    <!-- Main Content -->
     <div class="main-content">
-        <!-- Image Banner -->
-        <img id="player-banner" class="player-banner-img" src="banner.jpg" alt="Surah Banner">
-
-        <!-- Player Info Container -->
         <div class="player-info-container">
-            <div class="player-info">
-                <h2 id="player-title">Surah Title</h2>
-                <p id="player-number">Surah Number</p>
-                <h3 id="player-title-meaning">Surah Meaning</h3>
-                <p id="place-of-revelation">Revelation: Mecca/Medina</p>
+            <h2 id="player-title">Surah Title</h2>
+            <p id="surah-details">Surah Details</p>
 
-                <!-- Progress Bar -->
-                <div class="loading-bar">
-                    <span id="current-time">00:00</span>
-                    <progress id="progress-bar" value="0" max="100"></progress>
-                    <span id="total-time">00:00</span>
-                </div>
+            <!-- Audio Player Controls -->
+            <div class="controls">
+                <button id="prev-btn">⏪</button>
+                <button id="play-btn">▶️</button>
+                <button id="next-btn">⏩</button>
+            </div>
 
-                <!-- Audio Controls -->
-                <div class="audio-controls">
-                    <button id="repeat-btn">🔁</button>
-                    <button id="jump-10-btn">⏭️</button>
-                    <button id="prev-btn">⏪</button>
-                    <button id="mute-btn">🔕</button>
-                    <button id="play-stop-btn">▶️</button>
-                    <button id="next-btn">⏩</button>
-                    <button id="jump-back-10-btn">⏮️</button>
-                    <button id="auto-play-btn">🔀</button>
-                </div>
+            <div class="loading-bar">
+                <span id="current-time">00:00</span>
+                <progress id="progress-bar" value="0" max="100"></progress>
+                <span id="total-time">00:00</span>
             </div>
         </div>
     </div>
 
-    <!-- Sidebar -->
     <div id="sidebar" class="sidebar">
-        <button id="close-btn" class="close-btn">×</button>
+        <button id="close-btn">×</button>
         <ul id="surah-list">
-            <!-- Surah items will be dynamically added here -->
+            <!-- Surah list items will be inserted here -->
         </ul>
     </div>
 
